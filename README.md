@@ -7,7 +7,7 @@ This is the basic server on Expressjs that accepts only image files smaller than
 1. First run
 ```npm i```
 
-1. Create .env file at project root and add PORT=[port-of-your-choice] in it. 
+1. Create ```.env``` file at project root and add ```PORT=[port-of-your-choice]``` in it. 
 
 1. Run 
 ```npm start```
