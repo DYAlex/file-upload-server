@@ -1,6 +1,6 @@
-# Basic server on Expressjs
+# Basic server on [Expressjs](https://expressjs.com/)
 
-This is the basic server on Expressjs that accepts only image files smaller than 10mb and saves them into uploads folder.
+This is the basic server on [Express](https://expressjs.com/) that accepts only image files smaller than 10mb and saves them into uploads folder.
 
 ## To use this server:
 
@@ -12,4 +12,4 @@ This is the basic server on Expressjs that accepts only image files smaller than
 1. Run 
 ```npm start```
 
-1. Go to http://localhost:[PORT]/ in your browser.
+1. Go to ```http://localhost:[PORT]/``` in your browser.
