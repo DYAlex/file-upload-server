@@ -3,6 +3,7 @@ import express from 'express'
 import fileUpload from 'express-fileupload'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
+import { getMd5ImageName } from './helpers/utils.js'
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -40,8 +41,10 @@ app.post('/upload', (req, res) => {
     return res.sendStatus(400);
   }
   
+  // console.log('md5ImageName of uploaded file is', getMd5ImageName(image));
+  
   // Move the uploaded image to our upload folder
-  image.mv(__dirname + '/uploads/' + image.name);
+  image.mv(__dirname + '/uploads/' + getMd5ImageName(image));
   // All good
   res.sendStatus(200);
 });
