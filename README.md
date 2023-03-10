@@ -13,3 +13,7 @@ This is the basic server on [Express](https://expressjs.com/) that accepts only 
 ```npm start```
 
 1. Go to ```http://localhost:[PORT]/``` in your browser.
+
+## Known bugs
+
+- [CRITICAL] If user uploads file with the name that already exists in uploads folder the file get overwritten
