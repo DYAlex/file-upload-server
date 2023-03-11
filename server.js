@@ -4,6 +4,7 @@ import fileUpload from 'express-fileupload'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 import { getMd5ImageName } from './helpers/utils.js'
+import { imageValidator } from './validators/imageValidator.js'
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -22,9 +23,7 @@ app.get('/', (req, res) => {
     res.send('Hello World! Test');
 });
 
-app.post('/upload', (req, res) => {
-  // Log the files to the console
-  // console.log(req.files);
+app.post('/upload', async (req, res) => {
 
   // Get the file that was sent to our field named "image"
   const { image } = req.files;
@@ -42,11 +41,18 @@ app.post('/upload', (req, res) => {
   }
   
   // console.log('md5ImageName of uploaded file is', getMd5ImageName(image));
+  const md5ImageName = getMd5ImageName(image)
+  try {
+    // Move the uploaded image to our upload folder
+    image.mv(__dirname + '/uploads/' + md5ImageName);
+  } catch (error) {
+    console.log('Could not upload image', error);
+    res.sendStatus(500);
+  }
   
-  // Move the uploaded image to our upload folder
-  image.mv(__dirname + '/uploads/' + getMd5ImageName(image));
   // All good
-  res.sendStatus(200);
+  // res.sendStatus(201);
+  res.status(201).send(JSON.stringify(md5ImageName));
 });
 
 app.listen(process.env.PORT, () => {
