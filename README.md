@@ -16,4 +16,4 @@ This is the basic server on [Express](https://expressjs.com/) that accepts only 
 
 ## Known bugs
 
-- [FIXED] If user uploads file with the name that already exists in uploads folder the file get overwritten
+- [FIXED] If user uploads file with the name that already exists in uploads folder the file gets overwritten
