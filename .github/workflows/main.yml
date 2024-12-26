@@ -65,11 +65,12 @@ jobs:
       - name: Run tests
         run: npm test -json > test-ubuntu.json
 
-      - name: Upload test results
+      - name: Upload Ubuntu test results
         uses: actions/upload-artifact@v4
         with:
           name: Test-results-1.2.3
           path: test-ubuntu.json
+          
   test-windows:
     runs-on: windows-latest
     needs: install-windows  # Выполняется после установки зависимостей
@@ -87,7 +88,7 @@ jobs:
       - name: Run tests
         run: npm test -json > test-windows.json
 
-      - name: Upload test results
+      - name: Upload Windows test results
         uses: actions/upload-artifact@v4
         with:
           name: Test-results-1.2.3
@@ -110,7 +111,7 @@ jobs:
       - name: Run tests
         run: npm test -json > test-macos.json
 
-      - name: Upload test results
+      - name: Upload MacOS test results
         uses: actions/upload-artifact@v4
         with:
           name: Test-results-1.2.3
