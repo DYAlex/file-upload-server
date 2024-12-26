@@ -27,6 +27,10 @@ app.post('/upload', (req, res) => {
   // console.log(req.files);
 
   // Get the file that was sent to our field named "image"
+  if (req.files == null) {
+    console.log('No file found in upload data');
+    return res.sendStatus(400);
+  }
   const { image } = req.files;
 
   // If no image submitted, exit
