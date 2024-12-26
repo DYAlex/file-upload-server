@@ -66,7 +66,7 @@ jobs:
         run: npm test -json > test-ubuntu.json
 
       - name: Upload Ubuntu test results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: Test-results-1.2.3
           path: test-ubuntu.json
@@ -89,7 +89,7 @@ jobs:
         run: npm test -json > test-windows.json
 
       - name: Upload Windows test results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: Test-results-1.2.3
           path: test-windows.json
@@ -112,7 +112,7 @@ jobs:
         run: npm test -json > test-macos.json
 
       - name: Upload MacOS test results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: Test-results-1.2.3
           path: test-macos.json
