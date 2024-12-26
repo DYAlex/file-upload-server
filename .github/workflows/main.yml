@@ -1,0 +1,39 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  # Задача для установки зависимостей
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+  # Задача для тестирования
+  test:
+    runs-on: ubuntu-latest
+    needs: install  # Выполняется после установки зависимостей
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps --no-audit --force --verbose #Устанавливает зависимости из lock-файла
+
+      - name: Run tests
+        run: npm test
